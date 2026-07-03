@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import { Toaster } from "sonner";
 import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
+import { BUSINESS_ADDRESS } from "@/lib/address";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -64,8 +65,10 @@ const organizationJsonLd = {
   description: DEFAULT_DESCRIPTION,
   address: {
     "@type": "PostalAddress",
-    addressLocality: "Organize Sanayi Bölgesi",
-    addressCountry: "TR",
+    streetAddress: BUSINESS_ADDRESS.street,
+    addressLocality: BUSINESS_ADDRESS.district,
+    addressRegion: BUSINESS_ADDRESS.region,
+    addressCountry: BUSINESS_ADDRESS.country,
   },
   contactPoint: {
     "@type": "ContactPoint",

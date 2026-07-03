@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { buildWhatsAppUrl } from "@/lib/whatsapp";
+import { BUSINESS_ADDRESS, GOOGLE_MAPS_URL } from "@/lib/address";
 
 export const metadata: Metadata = {
   title: "İletişim",
@@ -35,9 +36,9 @@ const CONTACT_ITEMS = [
   },
   {
     label: "Adres",
-    value: "Organize Sanayi Bölgesi, Türkiye",
-    href: undefined,
-    external: false,
+    value: BUSINESS_ADDRESS.line,
+    href: GOOGLE_MAPS_URL,
+    external: true,
   },
 ];
 
@@ -106,6 +107,18 @@ export default function ContactPage() {
         >
           WhatsApp Üzerinden Yaz
         </a>
+
+        <div className="mt-10 overflow-hidden rounded-xl border border-hairline">
+          <iframe
+            title="TG Makina Konum"
+            src={`https://www.google.com/maps?q=${encodeURIComponent(BUSINESS_ADDRESS.line)}&output=embed`}
+            width="100%"
+            height="360"
+            style={{ border: 0 }}
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+          />
+        </div>
       </div>
     </div>
   );

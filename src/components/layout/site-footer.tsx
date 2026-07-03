@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { CATEGORIES } from "@/lib/categories";
+import { BUSINESS_ADDRESS, GOOGLE_MAPS_URL } from "@/lib/address";
 
 const WHATSAPP_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "905XXXXXXXXX";
 
@@ -70,6 +71,16 @@ export function SiteFooter() {
               <Link href="/hakkimizda" className="transition-colors hover:text-white">
                 Hakkımızda
               </Link>
+            </li>
+            <li>
+              <a
+                href={GOOGLE_MAPS_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="transition-colors hover:text-white"
+              >
+                {BUSINESS_ADDRESS.line}
+              </a>
             </li>
           </ul>
         </div>

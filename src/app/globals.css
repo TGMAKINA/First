@@ -1,0 +1,84 @@
+@import "tailwindcss";
+
+:root {
+  --background: #0a0a0d;
+  --foreground: #e4e5e9;
+
+  /* Near-black scale (was navy) */
+  --color-brand-950: #030304;
+  --color-brand-900: #0a0a0d;
+  --color-brand-800: #131318;
+  --color-brand-700: #1c1c24;
+  --color-brand-600: #2a2a35;
+  --color-brand-500: #3f3f4d;
+
+  /* Metallic steel gray scale */
+  --color-steel-300: #d4d6dc;
+  --color-steel-400: #a8acb8;
+  --color-steel-500: #7a7e8c;
+  --color-steel-600: #52555f;
+  --color-steel-700: #34363d;
+
+  /* Gold accent — brighter/bolder than before */
+  --color-accent-300: #f8e3a3;
+  --color-accent-400: #f0c14b;
+  --color-accent-500: #d4af37;
+  --color-accent-600: #b8860b;
+  --color-accent-700: #8a6508;
+
+  --color-whatsapp-500: #25d366;
+  --color-whatsapp-600: #1eb856;
+
+  /* Glass / hairline / premium-shadow surface tokens */
+  --color-glass-light: rgba(255, 255, 255, 0.06);
+  --color-glass-dark: rgba(3, 3, 4, 0.62);
+  --color-hairline: rgba(255, 255, 255, 0.1);
+  --color-hairline-onlight: rgba(10, 10, 13, 0.08);
+  --shadow-premium: 0 24px 48px -14px rgba(3, 3, 4, 0.45), 0 6px 16px -4px rgba(3, 3, 4, 0.25);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-brand-950: var(--color-brand-950);
+  --color-brand-900: var(--color-brand-900);
+  --color-brand-800: var(--color-brand-800);
+  --color-brand-700: var(--color-brand-700);
+  --color-brand-600: var(--color-brand-600);
+  --color-brand-500: var(--color-brand-500);
+  --color-steel-300: var(--color-steel-300);
+  --color-steel-400: var(--color-steel-400);
+  --color-steel-500: var(--color-steel-500);
+  --color-steel-600: var(--color-steel-600);
+  --color-steel-700: var(--color-steel-700);
+  --color-accent-300: var(--color-accent-300);
+  --color-accent-400: var(--color-accent-400);
+  --color-accent-500: var(--color-accent-500);
+  --color-accent-600: var(--color-accent-600);
+  --color-accent-700: var(--color-accent-700);
+  --color-whatsapp-500: var(--color-whatsapp-500);
+  --color-whatsapp-600: var(--color-whatsapp-600);
+  --color-glass-light: var(--color-glass-light);
+  --color-glass-dark: var(--color-glass-dark);
+  --color-hairline: var(--color-hairline);
+  --color-hairline-onlight: var(--color-hairline-onlight);
+  --shadow-premium: var(--shadow-premium);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

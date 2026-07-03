@@ -4,7 +4,7 @@ import { getSession } from "@/lib/auth-dal";
 import { LoginForm } from "@/components/admin/login-form";
 
 export const metadata: Metadata = {
-  title: "Admin Girişi | TG Makina",
+  title: "Admin Girişi",
   robots: { index: false, follow: false },
 };
 

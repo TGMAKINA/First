@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { CATEGORIES } from "@/lib/categories";
 
 export const metadata: Metadata = {
-  title: "Hakkımızda | TG Makina",
+  title: "Hakkımızda",
   description:
     "TG Makina; ebatlama, bantlama ve CNC makinaları için yedek parça tedarikinde deneyimli çözüm ortağınız.",
 };

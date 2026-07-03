@@ -21,7 +21,7 @@ export async function generateMetadata({
 
   const label = getCategoryLabel(category);
   return {
-    title: `${label} | TG Makina`,
+    title: label,
     description: `${label} için orijinal ve muadil ürünler. WhatsApp üzerinden hızlı fiyat teklifi alın.`,
   };
 }

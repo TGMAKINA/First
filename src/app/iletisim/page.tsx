@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { buildWhatsAppUrl } from "@/lib/whatsapp";
 
 export const metadata: Metadata = {
-  title: "İletişim | TG Makina",
+  title: "İletişim",
   description: "TG Makina ile iletişime geçin, yedek parça talepleriniz için WhatsApp üzerinden hızlıca fiyat teklifi alın.",
 };
 

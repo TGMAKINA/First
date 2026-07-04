@@ -5,7 +5,7 @@ import { ProductCard, type ProductCardData } from "./product-card";
 
 const gridVariants = {
   hidden: {},
-  show: { transition: { staggerChildren: 0.06 } },
+  show: { transition: { staggerChildren: 0.03 } },
 };
 
 export function ProductGrid({ products }: { products: ProductCardData[] }) {
@@ -24,8 +24,7 @@ export function ProductGrid({ products }: { products: ProductCardData[] }) {
     <motion.div
       variants={gridVariants}
       initial="hidden"
-      whileInView="show"
-      viewport={{ once: true, amount: 0.15 }}
+      animate="show"
       className="grid grid-cols-2 gap-4 sm:grid-cols-3 sm:gap-5 lg:grid-cols-4"
     >
       {products.map((product) => (

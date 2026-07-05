@@ -1,5 +1,5 @@
 export const CATEGORIES = [
-  { slug: "ebatlama", label: "Ebatlama Makinası Yedek Parça" },
+  { slug: "ebatlama", label: "Panel Ebatlama Makinası Yedek Parça" },
   { slug: "bantlama", label: "Bantlama Makinası Yedek Parça" },
   { slug: "cnc", label: "CNC Makinası Yedek Parça" },
   { slug: "yaglar", label: "Yağlar" },

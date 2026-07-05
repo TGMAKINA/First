@@ -10,7 +10,7 @@ const SLIDES = [
   {
     category: CATEGORIES[0],
     image: "/images/hero/ebatlama.jpg",
-    heading: "Ebatlama Makinaları için Orijinal Yedek Parça",
+    heading: "Panel Ebatlama Makinaları için Orijinal Yedek Parça",
     body: "Kesim hassasiyetinizi koruyun — testere bıçağından besleme sistemine kadar tüm parçalar hazır.",
   },
   {

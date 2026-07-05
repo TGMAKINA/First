@@ -1,9 +1,11 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { QuoteButton } from "./quote-button";
 import { TiltCard } from "@/components/ui/tilt-card";
+import { ImageLightbox } from "./image-lightbox";
 
 export type ProductCardData = {
   id: string;
@@ -19,6 +21,8 @@ const cardVariants = {
 };
 
 export function ProductCard({ product }: { product: ProductCardData }) {
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+
   return (
     <TiltCard
       maxTilt={6}
@@ -27,19 +31,49 @@ export function ProductCard({ product }: { product: ProductCardData }) {
     >
       <div className="relative aspect-square w-full overflow-hidden bg-brand-800">
         {product.primaryImage ? (
-          <motion.div
-            className="h-full w-full"
-            whileHover={{ scale: 1.08 }}
-            transition={{ duration: 0.4, ease: "easeOut" }}
-          >
-            <Image
+          <>
+            <button
+              type="button"
+              onClick={(e) => {
+                e.stopPropagation();
+                setLightboxOpen(true);
+              }}
+              aria-label={`${product.name} görselini büyüt`}
+              className="relative block h-full w-full cursor-zoom-in"
+            >
+              <motion.div
+                className="h-full w-full"
+                whileHover={{ scale: 1.08 }}
+                transition={{ duration: 0.4, ease: "easeOut" }}
+              >
+                <Image
+                  src={product.primaryImage.blobUrl}
+                  alt={product.name}
+                  fill
+                  sizes="(min-width: 1024px) 25vw, (min-width: 640px) 33vw, 50vw"
+                  className="object-cover"
+                />
+              </motion.div>
+              <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-black/0 opacity-0 transition-all duration-300 group-hover:bg-black/20 group-hover:opacity-100">
+                <span className="flex h-9 w-9 items-center justify-center rounded-full bg-white/90 text-brand-950">
+                  <svg viewBox="0 0 24 24" fill="none" className="h-4 w-4">
+                    <path
+                      d="M10 4a6 6 0 1 0 0 12 6 6 0 0 0 0-12Zm0 0v0M21 21l-4.35-4.35M7.5 10h5M10 7.5v5"
+                      stroke="currentColor"
+                      strokeWidth="1.6"
+                      strokeLinecap="round"
+                    />
+                  </svg>
+                </span>
+              </div>
+            </button>
+            <ImageLightbox
               src={product.primaryImage.blobUrl}
               alt={product.name}
-              fill
-              sizes="(min-width: 1024px) 25vw, (min-width: 640px) 33vw, 50vw"
-              className="object-cover"
+              isOpen={lightboxOpen}
+              onClose={() => setLightboxOpen(false)}
             />
-          </motion.div>
+          </>
         ) : (
           <div className="flex h-full w-full items-center justify-center text-steel-600">
             <svg viewBox="0 0 24 24" fill="none" className="h-16 w-16">

@@ -25,6 +25,12 @@ const SLIDES = [
     heading: "CNC Makinaları için Hassas Yedek Parça",
     body: "Spindle motorundan vakum pompasına, hassasiyetten ödün vermeyin.",
   },
+  {
+    category: CATEGORIES[3],
+    image: "/images/hero/yaglar.jpg",
+    heading: "Makineleriniz için Kaliteli Yağlar",
+    body: "Doğru yağlama, uzun ömürlü ve sorunsuz çalışan makineler demektir.",
+  },
 ];
 
 const AUTOPLAY_MS = 6500;

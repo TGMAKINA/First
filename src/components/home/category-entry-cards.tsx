@@ -30,11 +30,20 @@ const ICONS: Record<string, React.ReactNode> = {
       strokeLinecap="round"
     />
   ),
+  yaglar: (
+    <path
+      d="M12 3c3 3.6 5 6.6 5 9.2A5 5 0 0 1 7 12.2C7 9.6 9 6.6 12 3Z"
+      stroke="currentColor"
+      strokeWidth="1.4"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  ),
 };
 
 export function CategoryEntryCards() {
   return (
-    <div className="grid gap-5 sm:grid-cols-3">
+    <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
       {CATEGORIES.map((category) => (
         <TiltCard key={category.slug} maxTilt={8} whileTap={{ scale: 0.98 }} className="h-full">
           <Link

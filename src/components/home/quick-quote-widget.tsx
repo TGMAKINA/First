@@ -52,7 +52,7 @@ export function QuickQuoteWidget({
               transition={{ duration: 0.25, ease: "easeOut" }}
             >
               <p className="text-sm font-medium text-steel-300">1. Makina seçin</p>
-              <div className="mt-3 grid gap-2 sm:grid-cols-3">
+              <div className="mt-3 grid gap-2 sm:grid-cols-2">
                 {CATEGORIES.map((c) => (
                   <button
                     key={c.slug}

@@ -34,6 +34,7 @@ export const metadata: Metadata = {
     "ebatlama makinası yedek parça",
     "bantlama makinası yedek parça",
     "cnc makinası yedek parça",
+    "makina yağları",
     "makina yedek parça",
     "TG Makina",
   ],

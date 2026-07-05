@@ -9,7 +9,7 @@ import {
 } from "drizzle-orm/pg-core";
 import { relations } from "drizzle-orm";
 
-export const categoryEnum = pgEnum("category", ["ebatlama", "bantlama", "cnc"]);
+export const categoryEnum = pgEnum("category", ["ebatlama", "bantlama", "cnc", "yaglar"]);
 
 export const products = pgTable("products", {
   id: uuid("id").primaryKey().defaultRandom(),

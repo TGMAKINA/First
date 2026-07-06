@@ -2,14 +2,14 @@
 
 import { useActionState, useState } from "react";
 import { motion } from "framer-motion";
-import { CATEGORIES, type CategorySlug } from "@/lib/categories";
+import { PRODUCT_CATEGORIES, type ProductCategorySlug } from "@/lib/categories";
 import { slugify } from "@/lib/slugify";
 import type { ProductFormState } from "@/app/admin/(dashboard)/urunler/actions";
 
 export type ProductFormValues = {
   name: string;
   slug: string;
-  category: CategorySlug;
+  category: ProductCategorySlug;
   description: string;
   quoteNote: string;
   displayOrder: number;
@@ -19,7 +19,7 @@ export type ProductFormValues = {
 const emptyValues: ProductFormValues = {
   name: "",
   slug: "",
-  category: CATEGORIES[0].slug,
+  category: PRODUCT_CATEGORIES[0].slug,
   description: "",
   quoteNote: "",
   displayOrder: 0,
@@ -85,7 +85,7 @@ export function ProductForm({
           defaultValue={values.category}
           className="mt-1 w-full rounded-lg border border-zinc-300 px-4 py-2.5 text-sm focus:border-brand-600 focus:outline-none"
         >
-          {CATEGORIES.map((c) => (
+          {PRODUCT_CATEGORIES.map((c) => (
             <option key={c.slug} value={c.slug}>
               {c.label}
             </option>

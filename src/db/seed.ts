@@ -3,12 +3,12 @@ config({ path: ".env.local" });
 
 import { db } from "./index";
 import { products, testimonials } from "./schema";
-import type { CategorySlug } from "@/lib/categories";
+import type { ProductCategorySlug } from "@/lib/categories";
 
 const seedProducts: {
   name: string;
   slug: string;
-  category: CategorySlug;
+  category: ProductCategorySlug;
   description: string;
   quoteNote?: string;
   displayOrder: number;

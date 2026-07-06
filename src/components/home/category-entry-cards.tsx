@@ -6,6 +6,15 @@ import { CATEGORIES } from "@/lib/categories";
 import { TiltCard } from "@/components/ui/tilt-card";
 
 const ICONS: Record<string, React.ReactNode> = {
+  tg1300x: (
+    <path
+      d="M4 16.5 8 6h8l4 10.5M4 16.5h16M4 16.5V19h16v-2.5"
+      stroke="currentColor"
+      strokeWidth="1.4"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  ),
   ebatlama: (
     <path
       d="M4 6h16M4 12h10M4 18h16M17 9v6"
@@ -43,7 +52,7 @@ const ICONS: Record<string, React.ReactNode> = {
 
 export function CategoryEntryCards() {
   return (
-    <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+    <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
       {CATEGORIES.map((category) => (
         <TiltCard key={category.slug} maxTilt={8} whileTap={{ scale: 0.98 }} className="h-full">
           <Link
@@ -62,12 +71,13 @@ export function CategoryEntryCards() {
             <div className="mt-6">
               <h3 className="text-lg font-semibold text-white">{category.label}</h3>
               <p className="mt-2 text-sm text-steel-400">
-                Bu kategorideki ürünleri görüntüleyin ve WhatsApp üzerinden
-                fiyat teklifi alın.
+                {category.kind === "showcase"
+                  ? "Makinamızı yakından inceleyin."
+                  : "Bu kategorideki ürünleri görüntüleyin ve WhatsApp üzerinden fiyat teklifi alın."}
               </p>
             </div>
             <span className="mt-6 inline-flex items-center gap-1 text-sm font-semibold text-accent-400">
-              Ürünleri Gör
+              {category.kind === "showcase" ? "İncele" : "Ürünleri Gör"}
               <span className="transition-transform group-hover:translate-x-1">→</span>
             </span>
           </Link>

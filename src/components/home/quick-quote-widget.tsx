@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { CATEGORIES, type CategorySlug } from "@/lib/categories";
+import { PRODUCT_CATEGORIES, type ProductCategorySlug } from "@/lib/categories";
 import { buildQuickQuoteMessage, openWhatsApp } from "@/lib/whatsapp";
 
 export type QuickQuoteProduct = { id: string; name: string };
@@ -10,17 +10,17 @@ export type QuickQuoteProduct = { id: string; name: string };
 export function QuickQuoteWidget({
   productsByCategory,
 }: {
-  productsByCategory: Record<CategorySlug, QuickQuoteProduct[]>;
+  productsByCategory: Record<ProductCategorySlug, QuickQuoteProduct[]>;
 }) {
   const [step, setStep] = useState<1 | 2>(1);
-  const [category, setCategory] = useState<CategorySlug | null>(null);
+  const [category, setCategory] = useState<ProductCategorySlug | null>(null);
   const [productId, setProductId] = useState<string>("");
 
   const parts = category ? productsByCategory[category] ?? [] : [];
-  const categoryLabel = CATEGORIES.find((c) => c.slug === category)?.label ?? "";
+  const categoryLabel = PRODUCT_CATEGORIES.find((c) => c.slug === category)?.label ?? "";
   const selectedProduct = parts.find((p) => p.id === productId);
 
-  function handleSelectCategory(slug: CategorySlug) {
+  function handleSelectCategory(slug: ProductCategorySlug) {
     setCategory(slug);
     setProductId("");
     setStep(2);
@@ -53,7 +53,7 @@ export function QuickQuoteWidget({
             >
               <p className="text-sm font-medium text-steel-300">1. Makina seçin</p>
               <div className="mt-3 grid gap-2 sm:grid-cols-2">
-                {CATEGORIES.map((c) => (
+                {PRODUCT_CATEGORIES.map((c) => (
                   <button
                     key={c.slug}
                     type="button"

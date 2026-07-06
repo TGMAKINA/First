@@ -1,32 +1,32 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import { CATEGORIES } from "@/lib/categories";
+import { getCategory } from "@/lib/categories";
 
-const SLIDES = [
+const BASE_SLIDES = [
   {
-    category: CATEGORIES[0],
+    category: getCategory("ebatlama")!,
     image: "/images/hero/ebatlama.jpg",
     heading: "Panel Ebatlama Makinaları için Orijinal Yedek Parça",
     body: "Kesim hassasiyetinizi koruyun — testere bıçağından besleme sistemine kadar tüm parçalar hazır.",
   },
   {
-    category: CATEGORIES[1],
+    category: getCategory("bantlama")!,
     image: "/images/hero/bantlama.jpg",
     heading: "Bantlama Makinaları için Kesintisiz Üretim",
     body: "Yapıştırıcı tankından baskı silindirine, üretim hattınız hiç durmasın.",
   },
   {
-    category: CATEGORIES[2],
+    category: getCategory("cnc")!,
     image: "/images/hero/cnc.jpg",
     heading: "CNC Makinaları için Hassas Yedek Parça",
     body: "Spindle motorundan vakum pompasına, hassasiyetten ödün vermeyin.",
   },
   {
-    category: CATEGORIES[3],
+    category: getCategory("yaglar")!,
     image: "/images/hero/yaglar.jpg",
     heading: "Makineleriniz için Kaliteli Yağlar",
     body: "Doğru yağlama, uzun ömürlü ve sorunsuz çalışan makineler demektir.",
@@ -35,20 +35,33 @@ const SLIDES = [
 
 const AUTOPLAY_MS = 6500;
 
-export function HeroSlider() {
+export function HeroSlider({ showcaseImage }: { showcaseImage?: string | null }) {
   const [index, setIndex] = useState(0);
   const [paused, setPaused] = useState(false);
   const reduceMotion = useReducedMotion();
 
+  const slides = useMemo(() => {
+    if (!showcaseImage) return BASE_SLIDES;
+    return [
+      {
+        category: getCategory("tg1300x")!,
+        image: showcaseImage,
+        heading: "TG1300X Yüzey Temizleme Makinası",
+        body: "Yüzey temizleme işlemlerinde yüksek performans ve dayanıklılık.",
+      },
+      ...BASE_SLIDES,
+    ];
+  }, [showcaseImage]);
+
   useEffect(() => {
     if (paused) return;
     const timer = setInterval(() => {
-      setIndex((i) => (i + 1) % SLIDES.length);
+      setIndex((i) => (i + 1) % slides.length);
     }, AUTOPLAY_MS);
     return () => clearInterval(timer);
-  }, [paused]);
+  }, [paused, slides.length]);
 
-  const slide = SLIDES[index];
+  const slide = slides[index] ?? slides[0];
 
   return (
     <div
@@ -97,9 +110,9 @@ export function HeroSlider() {
           dragConstraints={{ left: 0, right: 0 }}
           dragElastic={0.15}
           onDragEnd={(_, info) => {
-            if (info.offset.x < -80) setIndex((i) => (i + 1) % SLIDES.length);
+            if (info.offset.x < -80) setIndex((i) => (i + 1) % slides.length);
             else if (info.offset.x > 80)
-              setIndex((i) => (i - 1 + SLIDES.length) % SLIDES.length);
+              setIndex((i) => (i - 1 + slides.length) % slides.length);
           }}
           className="absolute inset-0"
         >
@@ -132,7 +145,7 @@ export function HeroSlider() {
       </AnimatePresence>
 
       <div className="absolute inset-x-0 bottom-8 flex items-center justify-center gap-2.5">
-        {SLIDES.map((s, i) => (
+        {slides.map((s, i) => (
           <button
             key={s.category.slug}
             type="button"

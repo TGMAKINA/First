@@ -57,9 +57,20 @@ export const testimonials = pgTable("testimonials", {
   createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
 });
 
+export const showcases = pgTable("showcases", {
+  id: uuid("id").primaryKey().defaultRandom(),
+  slug: text("slug").notNull().unique(),
+  imageUrl: text("image_url"),
+  imagePathname: text("image_pathname"),
+  description: text("description"),
+  updatedAt: timestamp("updated_at", { withTimezone: true }).notNull().defaultNow(),
+});
+
 export type Product = typeof products.$inferSelect;
 export type NewProduct = typeof products.$inferInsert;
 export type ProductImage = typeof productImages.$inferSelect;
 export type NewProductImage = typeof productImages.$inferInsert;
 export type Testimonial = typeof testimonials.$inferSelect;
 export type NewTestimonial = typeof testimonials.$inferInsert;
+export type Showcase = typeof showcases.$inferSelect;
+export type NewShowcase = typeof showcases.$inferInsert;

@@ -6,6 +6,7 @@ import { cn } from "@/lib/cn";
 
 const NAV_ITEMS = [
   { href: "/admin", label: "Panel", exact: true },
+  { href: "/admin/tg1300x", label: "TG1300X Vitrin", exact: false },
   { href: "/admin/urunler", label: "Ürünler", exact: false },
   { href: "/admin/yorumlar", label: "Yorumlar", exact: false },
 ];

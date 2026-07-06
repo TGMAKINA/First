@@ -5,7 +5,11 @@ import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
-import { CATEGORIES, getCategoryLabel, type CategorySlug } from "@/lib/categories";
+import {
+  PRODUCT_CATEGORIES,
+  getCategoryLabel,
+  type ProductCategorySlug,
+} from "@/lib/categories";
 import { cn } from "@/lib/cn";
 import { deleteProduct, toggleProductActive } from "@/app/admin/(dashboard)/urunler/actions";
 import { ConfirmDialog } from "./confirm-dialog";
@@ -13,13 +17,13 @@ import { ConfirmDialog } from "./confirm-dialog";
 export type AdminProductRow = {
   id: string;
   name: string;
-  category: CategorySlug;
+  category: ProductCategorySlug;
   isActive: boolean;
   primaryImage: { blobUrl: string } | null;
 };
 
 export function ProductTable({ products }: { products: AdminProductRow[] }) {
-  const [filter, setFilter] = useState<CategorySlug | "all">("all");
+  const [filter, setFilter] = useState<ProductCategorySlug | "all">("all");
   const [isPending, startTransition] = useTransition();
   const router = useRouter();
 
@@ -53,7 +57,7 @@ export function ProductTable({ products }: { products: AdminProductRow[] }) {
         >
           Tümü ({products.length})
         </button>
-        {CATEGORIES.map((c) => (
+        {PRODUCT_CATEGORIES.map((c) => (
           <button
             key={c.slug}
             onClick={() => setFilter(c.slug)}

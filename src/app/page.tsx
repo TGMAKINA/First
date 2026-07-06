@@ -1,5 +1,5 @@
-import { getAllActiveProducts, getActiveTestimonials } from "@/db/queries";
-import { CATEGORIES, type CategorySlug } from "@/lib/categories";
+import { getAllActiveProducts, getActiveTestimonials, getShowcase } from "@/db/queries";
+import { PRODUCT_CATEGORIES, type ProductCategorySlug } from "@/lib/categories";
 import { HeroSlider } from "@/components/home/hero-slider";
 import { CategoryEntryCards } from "@/components/home/category-entry-cards";
 import { QuickQuoteWidget } from "@/components/home/quick-quote-widget";
@@ -8,24 +8,25 @@ import { TestimonialsSection } from "@/components/home/testimonials-section";
 export const dynamic = "force-dynamic";
 
 export default async function Home() {
-  const [products, testimonials] = await Promise.all([
+  const [products, testimonials, showcase] = await Promise.all([
     getAllActiveProducts(),
     getActiveTestimonials(),
+    getShowcase("tg1300x"),
   ]);
 
-  const productsByCategory = CATEGORIES.reduce(
+  const productsByCategory = PRODUCT_CATEGORIES.reduce(
     (acc, c) => {
       acc[c.slug] = products
         .filter((p) => p.category === c.slug)
         .map((p) => ({ id: p.id, name: p.name }));
       return acc;
     },
-    {} as Record<CategorySlug, { id: string; name: string }[]>
+    {} as Record<ProductCategorySlug, { id: string; name: string }[]>
   );
 
   return (
     <div>
-      <HeroSlider />
+      <HeroSlider showcaseImage={showcase?.imageUrl ?? null} />
 
       <section className="bg-brand-950 py-16">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">

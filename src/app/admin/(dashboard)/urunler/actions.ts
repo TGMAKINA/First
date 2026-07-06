@@ -7,10 +7,13 @@ import { del } from "@vercel/blob";
 import { requireAdmin } from "@/lib/auth-dal";
 import { db } from "@/db";
 import { products, productImages } from "@/db/schema";
-import { CATEGORIES, type CategorySlug } from "@/lib/categories";
+import { PRODUCT_CATEGORIES, type ProductCategorySlug } from "@/lib/categories";
 import { slugify } from "@/lib/slugify";
 
-const categorySlugs = CATEGORIES.map((c) => c.slug) as [CategorySlug, ...CategorySlug[]];
+const categorySlugs = PRODUCT_CATEGORIES.map((c) => c.slug) as [
+  ProductCategorySlug,
+  ...ProductCategorySlug[],
+];
 
 const productSchema = z.object({
   name: z.string().trim().min(1, "Ürün adı gereklidir."),

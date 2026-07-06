@@ -1,9 +1,9 @@
 import { and, asc, eq } from "drizzle-orm";
 import { db } from "./index";
-import { products, productImages, testimonials } from "./schema";
-import type { CategorySlug } from "@/lib/categories";
+import { products, productImages, testimonials, showcases } from "./schema";
+import type { ProductCategorySlug } from "@/lib/categories";
 
-export async function getActiveProductsByCategory(category: CategorySlug) {
+export async function getActiveProductsByCategory(category: ProductCategorySlug) {
   const rows = await db.query.products.findMany({
     where: and(eq(products.category, category), eq(products.isActive, true)),
     orderBy: [asc(products.displayOrder), asc(products.name)],
@@ -56,6 +56,11 @@ export async function getAllTestimonialsAdmin() {
 
 export async function getTestimonialByIdAdmin(id: string) {
   const row = await db.query.testimonials.findFirst({ where: eq(testimonials.id, id) });
+  return row ?? null;
+}
+
+export async function getShowcase(slug: string) {
+  const row = await db.query.showcases.findFirst({ where: eq(showcases.slug, slug) });
   return row ?? null;
 }
 

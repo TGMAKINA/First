@@ -16,17 +16,14 @@ export function SiteFooter() {
     <footer className="border-t border-hairline bg-brand-950 text-zinc-300">
       <div className="mx-auto grid max-w-6xl gap-10 px-4 py-12 sm:px-6 md:grid-cols-3">
         <div>
-          <div className="flex items-center gap-2 text-lg font-bold text-white">
-            <span className="relative h-9 w-9 shrink-0 overflow-hidden rounded-md bg-white">
+          <div className="flex items-center">
+            <span className="relative h-14 w-14 shrink-0 overflow-hidden rounded-md bg-white">
               <Image
                 src="/images/logo-icon.png"
                 alt="TG Makina"
                 fill
-                className="object-contain p-1"
+                className="object-contain p-1.5"
               />
-            </span>
-            <span>
-              TG <span className="text-accent-500">Makina</span>
             </span>
           </div>
           <p className="mt-4 max-w-xs text-sm leading-6 text-zinc-400">

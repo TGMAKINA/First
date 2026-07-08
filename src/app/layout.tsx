@@ -62,7 +62,7 @@ const organizationJsonLd = {
   "@type": "Organization",
   name: SITE_NAME,
   url: SITE_URL,
-  logo: `${SITE_URL}/favicon.ico`,
+  logo: `${SITE_URL}/images/logo-icon.png`,
   description: DEFAULT_DESCRIPTION,
   address: {
     "@type": "PostalAddress",

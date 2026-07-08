@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 import { CategoryTabs } from "./category-tabs";
@@ -20,8 +21,14 @@ export function SiteHeader() {
     <header className="sticky top-0 z-40 border-b border-hairline bg-brand-950/90 backdrop-blur-md">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6">
         <Link href="/" className="flex items-center gap-2 text-lg font-bold text-white">
-          <span className="flex h-9 w-9 items-center justify-center rounded-md bg-accent-500 text-sm font-extrabold text-brand-950">
-            TG
+          <span className="relative h-9 w-9 shrink-0 overflow-hidden rounded-md bg-white shadow-sm">
+            <Image
+              src="/images/logo-icon.png"
+              alt="TG Makina"
+              fill
+              className="object-contain p-1"
+              priority
+            />
           </span>
           <span>
             TG <span className="text-accent-400">Makina</span>

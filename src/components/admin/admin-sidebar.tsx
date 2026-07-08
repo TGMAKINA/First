@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/cn";
 
@@ -17,8 +18,8 @@ export function AdminSidebar() {
   return (
     <aside className="flex h-full w-60 shrink-0 flex-col border-r border-zinc-200 bg-white">
       <div className="flex h-16 items-center gap-2 border-b border-zinc-200 px-5">
-        <span className="flex h-8 w-8 items-center justify-center rounded-md bg-brand-900 text-xs font-extrabold text-white">
-          TG
+        <span className="relative h-8 w-8 shrink-0">
+          <Image src="/images/logo-icon.png" alt="TG Makina" fill className="object-contain" />
         </span>
         <span className="text-sm font-bold text-brand-900">Admin Paneli</span>
       </div>

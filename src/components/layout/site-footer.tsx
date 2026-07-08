@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { CATEGORIES } from "@/lib/categories";
 import { BUSINESS_ADDRESS, GOOGLE_MAPS_URL } from "@/lib/address";
 
@@ -16,8 +17,13 @@ export function SiteFooter() {
       <div className="mx-auto grid max-w-6xl gap-10 px-4 py-12 sm:px-6 md:grid-cols-3">
         <div>
           <div className="flex items-center gap-2 text-lg font-bold text-white">
-            <span className="flex h-9 w-9 items-center justify-center rounded-md bg-white/10 text-sm font-extrabold">
-              TG
+            <span className="relative h-9 w-9 shrink-0 overflow-hidden rounded-md bg-white">
+              <Image
+                src="/images/logo-icon.png"
+                alt="TG Makina"
+                fill
+                className="object-contain p-1"
+              />
             </span>
             <span>
               TG <span className="text-accent-500">Makina</span>

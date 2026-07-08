@@ -8,6 +8,10 @@ import { ShowcaseView } from "@/components/products/showcase-view";
 export const dynamic = "force-dynamic";
 export const dynamicParams = false;
 
+const SHOWCASE_GALLERIES: Record<string, string[]> = {
+  tg1300x: ["/images/tg1300x/1.jpg", "/images/tg1300x/2.jpg", "/images/tg1300x/3.jpg"],
+};
+
 export function generateStaticParams() {
   return CATEGORIES.map((c) => ({ category: c.slug }));
 }
@@ -81,6 +85,7 @@ async function ShowcaseContent({ slug, title }: { slug: string; title: string })
         title={title}
         imageUrl={showcase?.imageUrl ?? null}
         description={showcase?.description ?? null}
+        galleryImages={SHOWCASE_GALLERIES[slug] ?? []}
       />
     </div>
   );

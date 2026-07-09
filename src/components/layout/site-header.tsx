@@ -20,14 +20,15 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-40 border-b border-hairline bg-brand-950/90 backdrop-blur-md">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6">
-        <Link href="/" className="flex items-center gap-2">
-          <span className="relative h-12 w-12 shrink-0 overflow-hidden rounded-md bg-white shadow-sm">
+        <Link href="/" className="flex shrink-0 items-center">
+          <span className="inline-flex items-center rounded-md bg-white px-2.5 py-1.5 shadow-sm">
             <Image
-              src="/images/logo-icon.png"
+              src="/images/logo-wide.png"
               alt="TG Makina"
-              fill
-              className="object-contain p-1"
+              width={1037}
+              height={400}
               priority
+              className="h-9 w-auto sm:h-11"
             />
           </span>
         </Link>

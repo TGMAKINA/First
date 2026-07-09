@@ -17,12 +17,13 @@ export function SiteFooter() {
       <div className="mx-auto grid max-w-6xl gap-10 px-4 py-12 sm:px-6 md:grid-cols-3">
         <div>
           <div className="flex items-center">
-            <span className="relative h-14 w-14 shrink-0 overflow-hidden rounded-md bg-white">
+            <span className="inline-flex items-center rounded-md bg-white px-3 py-2">
               <Image
-                src="/images/logo-icon.png"
+                src="/images/logo-wide.png"
                 alt="TG Makina"
-                fill
-                className="object-contain p-1.5"
+                width={1037}
+                height={400}
+                className="h-11 w-auto"
               />
             </span>
           </div>
